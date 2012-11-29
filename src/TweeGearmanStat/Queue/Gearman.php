@@ -30,7 +30,7 @@ class Gearman
             }
             $responses[$name] = $response;
         }
-        return $response;
+        return $responses;
     }
 
     protected function command($socket, $command)

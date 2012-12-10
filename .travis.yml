@@ -7,7 +7,7 @@ before_script:
     - sudo apt-get install gearman-server libgearman-dev
     - sudo /etc/init.d/gearman-server restart
     - printf "\n"| pecl install gearman
-    - cat /etc/default/
+    - ls /etc/default/
     - sudo cat /var/log/gearman-server/gearman.log
     # worker
     - php -f tests/worker.php >/dev/null 2>/dev/null &

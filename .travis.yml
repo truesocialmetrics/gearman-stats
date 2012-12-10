@@ -5,7 +5,7 @@ php:
 before_script:
     # gearman
     - sudo apt-get install gearman-server libgearman-dev
-    - sudo php tests/bin/elable-gearman.php
+    - sudo php tests/bin/enable-gearman.php
     - sudo /etc/init.d/gearman-server restart
     - printf "\n"| pecl install gearman
     # worker

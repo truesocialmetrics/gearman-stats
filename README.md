@@ -24,25 +24,25 @@ Installation
 
 1. Add this project and [Cdn](https://github.com/necromant2005/cdn) in your composer.json:
 
-    ```json
-    "require": {
-        "necromant2005/gearman-stats": "@dev",
-    }
-    ```
+```json
+"require": {
+    "necromant2005/gearman-stats": "@dev",
+}
+```
 
 2. Now tell composer to download TweeCdn by running the command:
 
-    ```bash
-    $ php composer.phar update
-    ```
+```bash
+$ php composer.phar update
+```
 
 #### Usage
 
-    ```php
-    $adapter = new \TweeGearmanStat\Queue\Gearman(array(
-        'h1' => array('host' => '10.0.0.1', 'port' => 4730, 'timeout' => 1),
-        'h2' => array('host' => '10.0.0.2', 'port' => 4730, 'timeout' => 1),
-    ));
-    $status = $adapter->status();
-    var_dump($status);
-    ```
+```php
+$adapter = new \TweeGearmanStat\Queue\Gearman(array(
+    'h1' => array('host' => '10.0.0.1', 'port' => 4730, 'timeout' => 1),
+    'h2' => array('host' => '10.0.0.2', 'port' => 4730, 'timeout' => 1),
+));
+$status = $adapter->status();
+var_dump($status);
+```

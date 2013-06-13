@@ -7,6 +7,8 @@ class Gearman
     const OPTION_PORT = 'port';
     const OPTION_TIMEOUT = 'timeout';
 
+    private $defaultTimeout = 5;
+
     protected $connections = array();
 
     public function __construct(array $servers)
@@ -14,7 +16,8 @@ class Gearman
         foreach ($servers as $name => $options) {
             $error = '';
             $errno = 0;
-            $socket = fsockopen($options[self::OPTION_HOST], $options[self::OPTION_PORT], $error, $errno, $options[self::OPTION_TIMEOUT]);
+            $timeout = isset($options[self::OPTION_TIMEOUT]) ? $options[self::OPTION_TIMEOUT] : $this->defaultTimeout;
+            $socket  = fsockopen($options[self::OPTION_HOST], $options[self::OPTION_PORT], $error, $errno, $timeout );
             $this->connections[$name] = $socket;
         }
     }

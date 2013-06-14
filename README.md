@@ -1,6 +1,6 @@
 TweeGearmanStat
 =======
-Version 1.0.0 Created by Rostislav Mykhajliw [![Build Status](https://secure.travis-ci.org/necromant2005/gearmane-stats.png?branch=master)](https://travis-ci.org/necromant2005/gearman-stats)
+Version 1.0.0 Created by Rostislav Mykhajliw
 
 Introduction
 ------------
@@ -42,6 +42,16 @@ $ php composer.phar update
 $adapter = new \TweeGearmanStat\Queue\Gearman(array(
     'h1' => array('host' => '10.0.0.1', 'port' => 4730, 'timeout' => 1),
     'h2' => array('host' => '10.0.0.2', 'port' => 4730, 'timeout' => 1),
+));
+$status = $adapter->status();
+var_dump($status);
+```
+
+With default timeout 5 sec
+```php
+$adapter = new \TweeGearmanStat\Queue\Gearman(array(
+    'h1' => array('host' => '10.0.0.1', 'port' => 4730),
+    'h2' => array('host' => '10.0.0.2', 'port' => 4730),
 ));
 $status = $adapter->status();
 var_dump($status);

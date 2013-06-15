@@ -11,7 +11,7 @@ TweeGearmanStat is a simple adapter for monitrong your Gearman queue for php
 Features / Goals
 ----------------
 
-* Having a simple class  for monitong Queue on webside
+* Having a simple class for monitong Queue on webside
 * Use a standard command "status" and provide result as array
 * Work with multiple gearman servers
 
@@ -22,7 +22,7 @@ Installation
 
 #### With composer
 
-1. Add this project and [Cdn](https://github.com/necromant2005/cdn) in your composer.json:
+1. Add this to your composer.json:
 
 ```json
 "require": {
@@ -30,7 +30,7 @@ Installation
 }
 ```
 
-2. Now tell composer to download TweeCdn by running the command:
+2. Now tell composer to download TweeGearmanStat by running the command:
 
 ```bash
 $ php composer.phar update

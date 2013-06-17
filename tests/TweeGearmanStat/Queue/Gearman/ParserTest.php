@@ -11,4 +11,25 @@ class ParserTest extends PHPUnit_Framework_TestCase
             'running' => 3,
             'workers' => 5), Parser::statusLine("test2\t1\t3\t5\n"));
     }
+
+    /**
+     * @param string $inputString
+     * @dataProvider badDataProvider
+     */
+    public function testBadData($inputString)
+    {
+        $this->assertEquals(array(
+            'name' => '',
+            'queue' => 0,
+            'running' => 0,
+            'workers' => 0), Parser::statusLine($inputString));
+    }
+
+    public function badDataProvider()
+    {
+        return array(
+            array("\t1\t3\t5\n"),
+            array("name\t3\t5\n"),
+        );
+    }
 }

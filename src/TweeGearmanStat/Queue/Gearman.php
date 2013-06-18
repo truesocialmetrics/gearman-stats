@@ -29,11 +29,7 @@ class Gearman
             $body = trim($this->command($socket, 'status'));
             $response = array();
             foreach (explode("\n", $body) as $line) {
-                $parsedResponse = Gearman\Parser::statusLine($line);
-
-                if (!empty($parsedResponse['name'])) {
-                    $response []= $parsedResponse;
-                }
+                $response[] = Gearman\Parser::statusLine($line);
             }
             $responses[$name] = $response;
         }

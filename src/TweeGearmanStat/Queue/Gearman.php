@@ -20,8 +20,8 @@ class Gearman
     public function status()
     {
         $responses = array();
-        $this->connect();
-        foreach ($this->connections as $name => $socket) {
+        $this->setConnections();
+        foreach ($this->getConnections() as $name => $socket) {
             $body = trim($this->command($socket, 'status'));
             $response = array();
             foreach (explode("\n", $body) as $line) {
@@ -43,8 +43,14 @@ class Gearman
         return $response;
     }
 
-    protected function connect()
+    /**
+     * @return bool
+     */
+    protected function setConnections()
     {
+        if (empty($this->servers)) {
+            return false;
+        }
         foreach ($this->servers as $name => $options) {
             $error = '';
             $errno = 0;
@@ -52,5 +58,15 @@ class Gearman
             $socket  = fsockopen($options[self::OPTION_HOST], $options[self::OPTION_PORT], $error, $errno, $timeout );
             $this->connections[$name] = $socket;
         }
+
+        return true;
+    }
+
+    /**
+     * @return array<resource>
+     */
+    public function getConnections()
+    {
+        return $this->connections;
     }
 }

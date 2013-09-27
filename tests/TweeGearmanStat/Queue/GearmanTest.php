@@ -1,6 +1,8 @@
 <?php
 namespace TweeGearmanStat\Queue;
 use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_Assert;
+
 class GearmanTest extends PHPUnit_Framework_TestCase
 {
     public function testConnect()
@@ -43,5 +45,15 @@ class GearmanTest extends PHPUnit_Framework_TestCase
         $connections = $adapter->connections();
         $this->assertCount(1, $connections);
         $this->assertTrue(is_resource($connections['default']));
+    }
+
+    public function testDesturct()
+    {
+        $adapter = new Gearman(array(
+            'default' => array('host' => '127.0.0.1', 'port' => 4730, 'timeout' => 1),
+        ));
+        $adapter->connections();
+        $adapter->__destruct();
+        $this->assertEquals(array(), PHPUnit_Framework_Assert::readAttribute($adapter, 'connections'));
     }
 }

@@ -22,6 +22,15 @@ class Gearman
         $this->servers = $servers;
     }
 
+    public function __destruct()
+    {
+        foreach ($this->connections() as $name => $socket) {
+            if (!is_resource($socket)) continue;
+            fclose($socket);
+        }
+        $this->connections = array();
+    }
+
     public function connections()
     {
         if (count($this->connections)) {

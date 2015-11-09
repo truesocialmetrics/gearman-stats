@@ -13,8 +13,8 @@ class GearmanTest extends PHPUnit_Framework_TestCase
         $statuses = $adapter->status();
         $this->assertArrayHasKey('default', $statuses);
         $status = $statuses['default'];
-        $this->assertContains(array('name' => 'test1', 'queue' => 0, 'running' => 0, 'workers' => 1), $status);
-        $this->assertContains(array('name' => 'test2', 'queue' => 0, 'running' => 0, 'workers' => 1), $status);
+        $this->assertContains(array('name' => 'test1', 'queue' => 0, 'running' => 0, 'workers' => 1, 'error' => false), $status);
+        $this->assertContains(array('name' => 'test2', 'queue' => 0, 'running' => 0, 'workers' => 1, 'error' => false), $status);
     }
     
     public function testConnectWithDefaultTimeout()
@@ -25,8 +25,8 @@ class GearmanTest extends PHPUnit_Framework_TestCase
         $statuses = $adapter->status();
         $this->assertArrayHasKey('default', $statuses);
         $status = $statuses['default'];
-        $this->assertContains(array('name' => 'test1', 'queue' => 0, 'running' => 0, 'workers' => 1), $status);
-        $this->assertContains(array('name' => 'test2', 'queue' => 0, 'running' => 0, 'workers' => 1), $status);
+        $this->assertContains(array('name' => 'test1', 'queue' => 0, 'running' => 0, 'workers' => 1, 'error' => false), $status);
+        $this->assertContains(array('name' => 'test2', 'queue' => 0, 'running' => 0, 'workers' => 1, 'error' => false), $status);
     }
 
     /**

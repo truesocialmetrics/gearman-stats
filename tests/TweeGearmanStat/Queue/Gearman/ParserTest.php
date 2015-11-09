@@ -9,7 +9,8 @@ class ParserTest extends PHPUnit_Framework_TestCase
             'name' => 'test2',
             'queue' => 1,
             'running' => 3,
-            'workers' => 5), Parser::statusLine("test2\t1\t3\t5\n"));
+            'workers' => 5,
+            'error' => false), Parser::statusLine("test2\t1\t3\t5\n"));
     }
 
     /**
@@ -22,7 +23,8 @@ class ParserTest extends PHPUnit_Framework_TestCase
             'name' => '',
             'queue' => 0,
             'running' => 0,
-            'workers' => 0), Parser::statusLine($inputString));
+            'workers' => 0,
+            'error' => true), Parser::statusLine($inputString));
     }
 
     public function badDataProvider()

@@ -41,6 +41,7 @@ class Gearman
             $errno = 0;
             $timeout = isset($options[self::OPTION_TIMEOUT]) ? $options[self::OPTION_TIMEOUT] : $this->defaultTimeout;
             $socket  = fsockopen($options[self::OPTION_HOST], $options[self::OPTION_PORT], $error, $errno, $timeout );
+            stream_set_timeout($socket, $timeout);
             $this->connections[$name] = $socket;
         }
         return $this->connections;

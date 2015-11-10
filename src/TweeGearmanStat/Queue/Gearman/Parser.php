@@ -14,6 +14,7 @@ class Parser
                 'queue'   => 0,
                 'running' => 0,
                 'workers' => 0,
+                'error'   => true,
             );
         }
 
@@ -24,6 +25,7 @@ class Parser
             'queue'   => $queue,
             'running' => $running,
             'workers' => $workers,
+            'error'   => false,
         );
     }
 }

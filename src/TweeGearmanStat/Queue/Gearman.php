@@ -54,8 +54,11 @@ class Gearman
             $body = trim($this->command($socket, 'status'));
             $response = array();
             foreach (explode("\n", $body) as $line) {
-                $response[] = Gearman\Parser::statusLine($line);
+                $status = Gearman\Parser::statusLine($line);
+                $task = $status[Gearman\Parser::NAME];
+                $response[$task] = $status;
             }
+            ksort($response);
             $responses[$name] = $response;
         }
         return $responses;

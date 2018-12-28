@@ -1,9 +1,9 @@
 {
-    "name": "necromant2005/gearman-stats",
+    "name": "truesocialmetrics/gearman-stats",
     "type": "library",
     "description": "Geaman connector for getting status and statistic data",
     "keywords": ["gearman","statistatic"],
-    "homepage": "https://github.com/necromant2005/gearman-stats.git",
+    "homepage": "https://github.com/truesocialmetrics/gearman-stats",
     "license": "MIT",
     "authors": [
         {
@@ -14,11 +14,11 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=7.1"
     },
     "autoload": {
-        "psr-0": {
-            "TweeGearmanStat": "src/"
+        "psr-4": {
+            "TweeGearmanStat\\": "src/TweeGearmanStat"
         }
     }
 }
